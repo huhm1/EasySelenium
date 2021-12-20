@@ -6,6 +6,9 @@
 
 package test.pageObjects.google;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,13 +17,17 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class Search{
-    private WebDriver  driver;
+    private WebDriver        driver;
 
     @FindBy(name = "btnK")
-    private WebElement googleSearch;
+    private WebElement       googleSearch;
 
     @FindBy(name = "q")
-    private WebElement SearchTextField;
+    private WebElement       SearchTextField;
+
+    // @FindBy(css = "#rso > div")
+    @FindBy(css = "div.tF2Cxc")
+    private List<WebElement> Results;
 
     public Search(){}
 
@@ -50,4 +57,19 @@ public class Search{
         return this;
     }
 
+    public List<WebElement> getResultsList(){
+        return this.Results;
+    }
+
+    public String getResultTitle(final int numberOfResult){
+        return this.Results.get(numberOfResult).findElement(By.cssSelector("a>h3")).getText();
+    }
+
+    public String getResultUrl(final int numberOfResult){
+        return this.Results.get(numberOfResult).findElement(By.cssSelector("a")).getAttribute("href");
+    }
+
+    public String getResultDescription(final int numberOfResult){
+        return this.Results.get(numberOfResult).findElement(By.cssSelector("div.IsZvec span")).getText();
+    }
 }

@@ -1,3 +1,3 @@
-Company Id,Customer name,City,Country,Province,Industry,Admin E-mail,Tech e-mail
+CompanyId,CustomerName,City,Country,Province,Industry,AdminEmail,TechEmail
 CC01,Common Customer,Columbia,United States,New York,Finance,admin@charlso.com,tech@charlso.com
 Junk,Junk Customer,Nassau,Bahamas,Freeport,Agriculture,admin@junk.com,tech@junk.com

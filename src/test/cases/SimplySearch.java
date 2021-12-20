@@ -9,12 +9,12 @@ import utils.TestBase;
 
 public class SimplySearch extends TestBase {
 	WebDriver driver = new Driver().driver;
-	Search home = new Search(driver);
+	Search search = new Search(driver);
 
 	@Test
 	public void googleSeach() {
 		super.driver = driver;
-		home.setSearchTextField("selenium");
+		search.setSearchTextField("selenium");
 	}
 
 }
