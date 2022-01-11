@@ -4,7 +4,7 @@
  * Not for reuse without permission.
  */
 
-package test.pageObjects.google;
+package seleniumTest.pageObjects.google;
 
 import java.util.List;
 
@@ -17,7 +17,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class Search{
-    private WebDriver        driver;
+    @SuppressWarnings("unused")
+	private WebDriver        driver;
 
     @FindBy(name = "btnK")
     private WebElement       googleSearch;

@@ -1,4 +1,4 @@
-package test.cases;
+package seleniumTest.cases;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import config.Config;
 import models.SearchKeyWord;
-import test.pageObjects.google.Search;
+import seleniumTest.pageObjects.google.Search;
 import utils.CSV;
 import utils.Driver;
 import utils.TestBase;

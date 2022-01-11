@@ -1,9 +1,9 @@
-package test.cases;
+package seleniumTest.cases;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
-import test.pageObjects.google.Search;
+import seleniumTest.pageObjects.google.Search;
 import utils.Driver;
 import utils.TestBase;
 

@@ -20,6 +20,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 public class CSV {
@@ -42,7 +43,11 @@ public class CSV {
 		}
 
 		try {
-			content = reader.readAll();
+			try {
+				content = reader.readAll();
+			} catch (CsvException e) {
+				e.printStackTrace();
+			}
 			return content;
 		} catch (IOException e) {
 			e.printStackTrace();
