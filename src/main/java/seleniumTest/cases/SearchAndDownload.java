@@ -10,17 +10,14 @@ import config.Config;
 import models.SearchKeyWord;
 import seleniumTest.pageObjects.google.Search;
 import utils.CSV;
+import utils.Downloader;
 import utils.Driver;
 import utils.TestBase;
 
-public class SearchResultsToCsv extends TestBase {
+public class SearchAndDownload extends TestBase {
 	WebDriver driver = new Driver().driver;
 	Search search = new Search(this.driver);
 
-	/**
-	 * Use search keyword which stored in SearchKeyWords.csv, search at goole.com.
-	 * And store the search results in csv files.
-	 */
 	@Test
 	public void googleSeach() {
 		super.driver = this.driver;
@@ -29,7 +26,8 @@ public class SearchResultsToCsv extends TestBase {
 		int resultSize = 0;
 
 		final String[] columnNames = "Title#URL#Description".split("#");
-		String resultTitle, resultUrl, resultDescription;
+		final String[] result = null;
+		String fileName, resultUrl, resultDescription;
 		for (final SearchKeyWord s : KeyWordList) {
 			final List<String[]> searchResults = new ArrayList<>();
 			searchResults.add(0, columnNames);
@@ -37,14 +35,11 @@ public class SearchResultsToCsv extends TestBase {
 			this.search.setSearchTextField(s.keyWord);
 			resultSize = this.search.getResultsList().size();
 			for (int i = 0; i < resultSize; i++) {
-				resultTitle = this.search.getResultTitle(i);
+				fileName = s.keyWord + i + ".html";
 				resultUrl = this.search.getResultUrl(i);
-				resultDescription = this.search.getResultDescription(i);
-
-				searchResults.add(new String[] { resultTitle, resultUrl, resultDescription });
+				Downloader.download(resultUrl, driver.manage().getCookies(),
+						Config.reportFolder + "downloads\\" + fileName);
 			}
-
-			CSV.save(Config.reportFolder + s.keyWord + ".csv", searchResults);
 
 		}
 
